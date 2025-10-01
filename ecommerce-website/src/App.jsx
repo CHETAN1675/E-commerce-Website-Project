@@ -2,6 +2,7 @@ import Header from "./components/Products/Header";
 import ProductList from "./components/Products/ProductList";
 import Cart from "./components/Cart/Cart"
 import { useState } from 'react';
+import { CartProvider } from './CartContext/CartContext';
 
 
 function App() {
@@ -11,35 +12,12 @@ function App() {
   const handleCartOpen = () => setShowCart(true);
   const handleCartClose = () => setShowCart(false);
 
-  const cartElements = [
-    {
-      title: 'Colors',
-      price: 100,
-      imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-      quantity: 2,
-    },
-    {
-      title: 'Black and white Colors',
-      price: 50,
-      imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-      quantity: 3,
-    },
-    {
-      title: 'Yellow and Black Colors',
-      price: 70,
-      imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-      quantity: 1,
-    },
-  ];
-
   return (
-    <>
-    
+    <CartProvider>
   <Header onCartClick={handleCartOpen}></Header>
-  <ProductList></ProductList>
-  <Cart show = {showCart} handleClose = {handleCartClose} items = {cartElements}/>
-  
-    </> 
+  <ProductList/>
+  <Cart show = {showCart} handleClose = {handleCartClose}/>
+    </CartProvider> 
   );
 }
 

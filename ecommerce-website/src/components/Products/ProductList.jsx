@@ -1,6 +1,9 @@
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
+import { useContext } from "react";
+import CartContext from "../../CartContext/CartContext";
 
 const ProductList = () => {
+  const cartCtx = useContext(CartContext);
   const productsArr = [
     {
       title: 'Colors',
@@ -37,7 +40,7 @@ const ProductList = () => {
                   <Card.Title className="text-center">{product.title}</Card.Title>
                   <Card.Text className="text-center">${product.price}</Card.Text>
                 </div>
-                <Button variant="primary" style={{ width: '100%' }}>Add to Cart</Button>
+                <Button variant="primary" style={{ width: '100%' }}  onClick={() => cartCtx.addToCart(product)}>Add to Cart</Button>
               </Card.Body>
             </Card>
           </Col>
