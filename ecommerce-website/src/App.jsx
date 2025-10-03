@@ -1,23 +1,20 @@
+import "./App.css";
+import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./components/Products/Header";
-import ProductList from "./components/Products/ProductList";
-import Cart from "./components/Cart/Cart"
-import { useState } from 'react';
-import { CartProvider } from './CartContext/CartContext';
+import Footer from "./components/Layout/Footer";
+import CartProvider  from './CartContext/CartProvider';
+import Routers from "./components/routers/routers";
 
 
 function App() {
-  
-   const [showCart, setShowCart] = useState(false);
-
-  const handleCartOpen = () => setShowCart(true);
-  const handleCartClose = () => setShowCart(false);
-
   return (
+    <Router>
     <CartProvider>
-  <Header onCartClick={handleCartOpen}></Header>
-  <ProductList/>
-  <Cart show = {showCart} handleClose = {handleCartClose}/>
+    <Header></Header>
+    <Routers></Routers>
+    <Footer></Footer>
     </CartProvider> 
+    </Router>
   );
 }
 

@@ -1,27 +1,47 @@
-import { Navbar, Nav, Container,Button,Badge } from 'react-bootstrap';
-import { useContext } from 'react';
+import { Button } from 'react-bootstrap';
+import { useState,useContext } from 'react';
+import {Link} from "react-router-dom";
 import CartContext from '../../CartContext/CartContext';
+import CartIcon from "../Cart/CartIcon"
+import classes from "./Header.module.css"
+import Cart from '../Cart/Cart';
 
-const Header = (props) => {
+const Header = () => {
+  const [showCart, setShowCart] = useState(false);
+
+  const showCartHandler=()=>{
+setShowCart(!showCart);
+  }
     const cartCtx = useContext(CartContext);
+
+     let totalItems =0;
+     cartCtx.items.map((item)=>(totalItems+=item.quantity));
+
   return (
-    <Navbar bg="warning" variant="light" expand="lg" sticky="top">
-      <Container fluid>
-        <Navbar.Brand href="/" style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
-          Shop with E-comm
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbar-nav" />
-        <Navbar.Collapse id="navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link href="/" style={{ fontWeight: 500 }}>Home</Nav.Link>
-            <Nav.Link href="/store" style={{ fontWeight: 500 }}>Store</Nav.Link>
-            <Nav.Link href="/about" style={{ fontWeight: 500 }}>About</Nav.Link>
-          </Nav>
-           <Button onClick ={props.onCartClick} variant="dark"  className='ms-3'>Cart <Badge bg="light" text="dark">{cartCtx.totalItems}</Badge></Button>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+        <div>
+      <header className={classes.header}>
+        <div className={classes.link}>
+          <Link to="/">Home</Link>
+        </div>
+        <div className={classes.link}>
+          <Link to="/store">Store</Link>
+        </div>
+        <div className={classes.link}>
+          <Link to="/about">About</Link>
+        </div>
+
+        <Button className={classes.cartHolder} onClick={showCartHandler}>
+          <CartIcon style={{ width: '20px', height: '20px', marginRight: '8px' }} />
+          Cart ({totalItems})
+        </Button>
+
+        {showCart && <Cart showCartHandler={showCartHandler} />}
+      </header>
+      <h1 className={classes.banner}>The Generics</h1>
+    </div>
   );
 };
 
 export default Header;
+
+
