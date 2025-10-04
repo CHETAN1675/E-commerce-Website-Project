@@ -29,6 +29,9 @@ setShowCart(!showCart);
         <div className={classes.link}>
           <Link to="/about">About</Link>
         </div>
+         <div className="links">
+          <Link to="/contact-us">Contact Us</Link>
+        </div>
 
         <Button className={classes.cartHolder} onClick={showCartHandler}>
           <CartIcon style={{ width: '20px', height: '20px', marginRight: '8px' }} />
