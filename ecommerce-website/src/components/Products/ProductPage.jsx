@@ -64,7 +64,7 @@ const ProductPage = () => {
         <div className="product-reviews">
           <h2>Reviews</h2>
           <h3>Steve Jobs</h3>
-          <p>Apple is Shit buy Android.</p>
+          <p>Lorem ipsum carrots enhanced rebates.</p>
         </div>
         <Link to="/store">Back to Store</Link>
       </div>

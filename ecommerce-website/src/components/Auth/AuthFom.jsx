@@ -1,5 +1,5 @@
 import { useState, useRef, useContext } from "react";
-import AuthContext from "../Store/AuthContext";
+import AuthContext from "../../CartContext/AuthContext";
 import classes from "./AuthForm.module.css";
 import { useNavigate } from "react-router-dom";
 

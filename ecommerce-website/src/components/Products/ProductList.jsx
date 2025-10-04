@@ -43,9 +43,9 @@ const ProductList = () => {
   const cartCtx = useContext(CartContext);
   const navigate = useNavigate();
 
-  // Navigate to product detail page by ID
+  
   const productClickHandler = (id) => {
-    navigate(`${routePath.ProductPage}/${id}`);
+    navigate(routePath.ProductPage);
   };
 
   const addItemToCart = (item) => {
