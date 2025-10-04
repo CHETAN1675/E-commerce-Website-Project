@@ -12,21 +12,21 @@ const CartItem = () => {
   return (
     <div>
       {cartCtx.items.map((item) => (
-        <div className={classes.cartItems} key={item.id}>
+        <div className={classes.cartItems} key={item._id}>
           <div className={classes.cartItemName}>
-            <img src={item.imageUrl} alt={item.title} className={classes.image} />
+            <img src={item.items.imageUrl} alt={item.title} className={classes.image} />
             <span className={classes.title}>{item.title}</span>
           </div>
-          <div className={classes.cartItemsPrice}>${item.price}</div>
+          <div className={classes.cartItemsPrice}>${item.items.price}</div>
           <div className={classes.cartItemsQuantity}>
             <input
               type="number"
-              value={item.quantity}
+              value={item.items.quantity}
               readOnly
               className={classes.quantityInput}
             />
             <button
-              onClick={() => removeItemFromCart(item.id)}
+              onClick={() => removeItemFromCart(item._id)}
               className={classes.removeButton}
             >
               Remove

@@ -1,6 +1,7 @@
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import { useContext } from "react";
 import CartContext from "../../CartContext/CartContext";
+import AuthContext from "../../CartContext/AuthContext";
 import { useNavigate } from "react-router-dom";
 import routePath from "../routers/routers"; // Make sure routePath.ProductPage = "/product"
 
@@ -41,15 +42,16 @@ const ProductList = () => {
   ];
 
   const cartCtx = useContext(CartContext);
+   const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
 
   
-  const productClickHandler = (id) => {
+  const productClickHandler = () => {
     navigate(routePath.ProductPage);
   };
 
-  const addItemToCart = (item) => {
-    cartCtx.addItem(item);
+  const addItemToCart = (item,email) => {
+    cartCtx.addItem(item,email);
   };
 
   return (
@@ -63,7 +65,7 @@ const ProductList = () => {
                 variant="top"
                 src={product.imageUrl}
                 alt={product.title}
-                onClick={() => productClickHandler(product.id)}
+                onClick={productClickHandler}
                 style={{ cursor: "pointer" }}
               />
               <Card.Body>
@@ -72,7 +74,7 @@ const ProductList = () => {
                 <Button
                   variant="primary"
                   className="mt-2 w-100"
-                  onClick={() => addItemToCart(product)}
+                  onClick={() => addItemToCart(product,authCtx.email)}
                 >
                   Add to Cart
                 </Button>
