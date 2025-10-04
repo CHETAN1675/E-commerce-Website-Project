@@ -5,6 +5,7 @@ import CartContext from '../../CartContext/CartContext';
 import CartIcon from "../Cart/CartIcon"
 import classes from "./Header.module.css"
 import Cart from '../Cart/Cart';
+import AuthContext from "../../CartContext/AuthContext"
 
 const Header = () => {
   const [showCart, setShowCart] = useState(false);
@@ -13,6 +14,7 @@ const Header = () => {
 setShowCart(!showCart);
   }
     const cartCtx = useContext(CartContext);
+     const authCtx = useContext(AuthContext);
 
      let totalItems =0;
      cartCtx.items.map((item)=>(totalItems+=item.quantity));

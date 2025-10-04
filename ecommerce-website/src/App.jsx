@@ -10,9 +10,11 @@ function App() {
   return (
     <Router>
     <CartProvider>
+      <AuthContextProvider>
     <Header></Header>
     <Routers></Routers>
     <Footer></Footer>
+    </AuthContextProvider>
     </CartProvider> 
     </Router>
   );
